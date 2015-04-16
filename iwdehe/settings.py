@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
+#    'allauth.socialaccount',
     'sitio',
 )
 
@@ -52,10 +52,12 @@ AUTHENTICATION_BACKENDS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     # Required by `allauth` template tags
+
     'django.core.context_processors.request',
     # `allauth` specific context processors
     'allauth.account.context_processors.account',
-    'allauth.socialaccount.context_processors.socialaccount',
+    'django.contrib.auth.context_processors.auth'
+    #'allauth.socialaccount.context_processors.socialaccount',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -71,7 +73,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'iwdehe.urls'
 
 WSGI_APPLICATION = 'iwdehe.wsgi.application'
-
+LOGIN_REDIRECT_URL = '/inicio'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
