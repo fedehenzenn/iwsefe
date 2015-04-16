@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^inicio/$', 'sitio.views.inicio'),
     url(r'^accounts/', include('allauth.urls')),
+    url(r'^solouser/', 'sitio.views.solouser'),
 )

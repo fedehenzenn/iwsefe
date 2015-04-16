@@ -74,6 +74,7 @@ ROOT_URLCONF = 'iwdehe.urls'
 
 WSGI_APPLICATION = 'iwdehe.wsgi.application'
 LOGIN_REDIRECT_URL = '/inicio'
+LOGOUT_REDIRECT_URL = '/inicio'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
