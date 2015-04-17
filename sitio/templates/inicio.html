@@ -1,6 +1,10 @@
-<h1>Prueba.com</h1>
+<h1>ReviewSlayer</h1>
 <body>
-    <a href="http://localhost:8000/accounts/login">link Login</a>
-    <a href="http://localhost:8000/accounts/logout">link Logout</a>
+    {% if user.is_authenticated %}
+            <a href="http://localhost:8000/accounts/logout">Logout</a>
+            <a href="http://localhost:8000/solouser">Acceso solo usuarios</a>
+    {% else %}
+            <a href="http://localhost:8000/accounts/login">Login</a>
+    {% endif %}
 </body>
-<p>asd</p>
+<p>Primeros pasos con django para crear una pagina de review de juegos</p>
