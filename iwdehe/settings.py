@@ -76,6 +76,8 @@ WSGI_APPLICATION = 'iwdehe.wsgi.application'
 LOGIN_REDIRECT_URL = '/inicio'
 #LOGOUT_REDIRECT_URL = '/inicio'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
