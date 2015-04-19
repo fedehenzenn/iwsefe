@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 
-def inicio(request):
-    return render(request, 'inicio.html', {})
+def home(request):
+    return render(request, 'home.html', {})
+
 
 @login_required
-def solouser(request):
-    return render(request, 'solouser.html', {})
-
+def restricted(request):
+    return render(request, 'restricted.html', {})

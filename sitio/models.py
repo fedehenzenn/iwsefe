@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from allauth.account.models import EmailAddress
-from allauth.socialaccount.models import SocialAccount
+#from allauth.socialaccount.models import SocialAccount
+#import hashlib
 
-import hashlib
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
@@ -14,7 +14,6 @@ class UserProfile(models.Model):
 
     class Meta:
         db_table = 'user_profile'
-
 
     def account_verified(self):
         if self.user.is_authenticated:
