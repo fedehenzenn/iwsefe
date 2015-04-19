@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
 #    'allauth.socialaccount',
+    'twitter_bootstrap',
     'sitio',
 )
 
@@ -72,8 +73,10 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'iwdehe.urls'
 
+TEMPLATE_DIRS = {}
+
 WSGI_APPLICATION = 'iwdehe.wsgi.application'
-LOGIN_REDIRECT_URL = '/inicio'
+LOGIN_REDIRECT_URL = '/home'
 #LOGOUT_REDIRECT_URL = '/inicio'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
