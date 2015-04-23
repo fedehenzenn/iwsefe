@@ -1,12 +1,14 @@
 from django.db import models
-8
+from django.contrib.auth.models import User
+
 # Create your models here.
 
 
-class post(models.Model):
-    titulo = models.CharField(max_length=50)
-    fecha = models.DateTimeField()
-    texto = models.CharField(max_length=300)
+class Gamereview(models.Model):
+    title = models.CharField(max_length=50)
+    date = models.DateTimeField()
+    text = models.CharField(max_length=300)
+    author = models.ForeingKey(User)
 
     def __str__(self):
-        return self.titulo
+        return self.title

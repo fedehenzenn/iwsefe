@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from forum.models import Gamereview
 
 
 def home(request):
-    return render(request, 'home.html', {})
+    reviews = Gamereview.object.all()
+    return render(request, 'home.html', {'lista_reviews': reviews})
 
 
 @login_required
