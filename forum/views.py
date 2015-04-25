@@ -12,7 +12,7 @@ class review_create(CreateView):
 #@login_required
 class review_delete(DeleteView):
     model = Gamereview
-    success_url = '/'
+    success_url = '/home'
 
 
 class review_listing(ListView):
