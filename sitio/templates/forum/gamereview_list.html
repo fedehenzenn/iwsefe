@@ -1,0 +1,9 @@
+<h1> Reviews</h1>
+
+<ul>
+    {% for Gamereview in object_list %}
+        <li>{{ Gamereview.title }} </li>
+    {% empty %}
+        <li> Sin reviews </li>
+    {% endfor %}
+</ul>

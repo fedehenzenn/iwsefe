@@ -4,8 +4,7 @@ from forum.models import Gamereview
 
 
 def home(request):
-    reviews = Gamereview.object.all()
-    return render(request, 'home.html', {'lista_reviews': reviews})
+    return render(request, 'home.html')
 
 
 @login_required

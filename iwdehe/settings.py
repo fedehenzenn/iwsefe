@@ -42,6 +42,7 @@ INSTALLED_APPS = (
 #    'allauth.socialaccount',
     'twitter_bootstrap',
     'sitio',
+    'forum',
 )
 
 AUTHENTICATION_BACKENDS = (

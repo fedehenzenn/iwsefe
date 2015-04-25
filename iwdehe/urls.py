@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from .views import review_create, review_update, review_listing, review_delete, review_detail
+from forum.views import review_create, review_update, review_listing, review_delete, review_detail
 
 
 urlpatterns = patterns('',
@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^restricted/', 'sitio.views.restricted'),
     url(r'^list/$', review_listing.as_view(), name='listing'),
     url(r'^create/$', review_create.as_view(), name='create'),
-    url(r'^(?<pk>\d+)/$', review_detail.as_view(), name='detail'),
-    url(r'^(?<pk>\d+)/update$', review_update.as_view(), name='update'),
-    url(r'^(?<pk>\d+)/delete$', review_delete.as_view(), name='delete'),
+#    url(r'^(?P\d+)/$', review_detail.as_view(), name='detail'),
+#    url(r'^(?P\d+)/update$', review_update.as_view(), name='update'),
+#    url(r'^(?P\d+)/delete$', review_delete.as_view(), name='delete'),
     )
