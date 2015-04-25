@@ -1,39 +1,4 @@
-<html>
-    <head>
-        <title> ReviewSlayer - Restricted </title>
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-        {% block body %}
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-                <div class="navbar-header">
-                  <a class="navbar-brand">ReviewSlayer</a>
-                </div>
-                <div>
-                    <ul class="nav navbar-nav navbar-right">
-                      <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">
-                          Inicio de sesion <b class="caret"></b>
-                        </a>
-                        {% if user.is_authenticated %}
-                            <ul class="dropdown-menu">
-                              <li><a href="http://localhost:8000/accounts/logout">Cerrar sesion</a></li>
-                              <li><a href="http://localhost:8000/home">Inicio</a></li>
-                            </ul>
-                        {% else %}
-                            <ul class="dropdown-menu">
-                              <li><a href="http://localhost:8000/accounts/login">Iniciar sesion</a></li>
-                            </ul>
-                        {% endif %}
-                      </li>
-                    </ul>
-                </div>
-          </div>
-        </nav>
-        {% endblock %}
-        <p>Renengando...</p>
-    </body>
-</html>
+{% extends "base/base.html" %}
+{% block head_title %}ReviewSlayer - Restricted{% endblock %}
+{% block body %} {% endblock %}
+<p>Renengando...</p>

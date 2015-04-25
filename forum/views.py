@@ -8,13 +8,13 @@ from django.core.urlresolvers import reverse
 #@login_required
 class review_create(CreateView):
     model = Gamereview
-    fields = ['title', 'date','text']
-    success_url = '/'
+    fields = ['title', 'date', 'text']
+    success_url = 'home/'
 
 #@login_required
 class review_delete(DeleteView):
     model = Gamereview
-    success_url = '/'
+    success_url = 'home/'
 
 
 class review_listing(ListView):

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block head_title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+      <nav class="navbar navbar-default">
+          <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand">ReviewSlayer</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                          Inicio de sesion <b class="caret"></b>
+                        </a>
+                        {% if user.is_authenticated %}
+                            <ul class="dropdown-menu">
+                              <li><a href="account/logout/">Cerrar sesion</a></li>
+                              <li><a href="list/">Listado de reviews</a></li>
+                            </ul>
+                        {% else %}
+                            <ul class="dropdown-menu">
+                              <li><a href="account/login">Iniciar sesion</a></li>
+                            </ul>
+                        {% endif %}
+                      </li>
+                    </ul>
+                </div>
+          </div>
+        </nav>
+    {% block body %}{% endblock %}
+  </body>
+</html>
