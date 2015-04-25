@@ -23,7 +23,7 @@ class review_update(UpdateView):
     model = Gamereview
 
     def get_success_url(self):
-        return reverse('review:detail', kwargs={
+        return reverse('detail', kwargs={
             'pk': self.objetct.pk,
         })
 
