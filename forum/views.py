@@ -2,6 +2,7 @@
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from forum.models import Gamereview
 from django.core.urlresolvers import reverse
+from django.utils.functional import lazy
 
 # Create your views here.
 
@@ -9,12 +10,12 @@ from django.core.urlresolvers import reverse
 class review_create(CreateView):
     model = Gamereview
     fields = ['title', 'date', 'text']
-    success_url = 'home/'
+    success_url = '/'
 
 #@login_required
 class review_delete(DeleteView):
     model = Gamereview
-    success_url = 'home/'
+    success_url = '/'
 
 
 class review_listing(ListView):
