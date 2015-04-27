@@ -1,1 +1,1 @@
-web: cd iwdehe/ && gunicorn iwdefe/iwdehe.wsgi --log-file -
+web: gunicorn iwdehe.wsgi --log-file -
