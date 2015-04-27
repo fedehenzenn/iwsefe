@@ -19,7 +19,7 @@ class review_delete(DeleteView):
 
 class review_listing(ListView):
     model = Gamereview
-
+    success_url = '/'
 
 class review_update(UpdateView):
     model = Gamereview
@@ -32,3 +32,4 @@ class review_update(UpdateView):
 
 class review_detail(DetailView):
     model = Gamereview
+    success_url = '/'
