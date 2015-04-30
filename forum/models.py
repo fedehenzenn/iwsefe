@@ -12,8 +12,8 @@ class Categoria(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return reverse2("categoria", dpk=self.pk)
+    #def get_absolute_url(self):
+        #return reverse("categoria", dpk=self.pk)
 
 
 class Gamereview(models.Model):
@@ -26,11 +26,11 @@ class Gamereview(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse2("reviews", dpk=self.pk)
+    #def get_absolute_url(self):
+        #return reverse("reviews", dpk=self.pk)
 
 
-class Commentario(models.Model):
+class Comentario(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User)
     text = models.TextField()
@@ -39,8 +39,7 @@ class Commentario(models.Model):
     class Meta:
 
         def __init__(self):
-            ordering = ["created"]
+            ordering = ["date"]
 
     def __unicode__(self):
-        return u"%s - %s - %s" % (self.author, self.review, self.text
-
+        return u"%s - %s - %s" % (self.author, self.review, self.text)
