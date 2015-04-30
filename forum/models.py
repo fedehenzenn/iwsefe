@@ -8,7 +8,7 @@ class Gamereview(models.Model):
     title = models.CharField(max_length=50)
     date = models.DateTimeField()
     text = models.CharField(max_length=300)
-#    author = models.ForeingKey(User)
+    author = models.ForeignKey(User)
 
     def __str__(self):
         return self.title
