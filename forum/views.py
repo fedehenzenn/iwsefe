@@ -9,7 +9,14 @@ from django.utils.functional import lazy
 class review_create(CreateView):
     model = Gamereview
     fields = ['title', 'date', 'text']
-    success_url = '/'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(review_create, self).form_valid(form)
+
+    def get_success_url(self):
+        return '/'
+
 
 #@login_required
 class review_delete(DeleteView):
