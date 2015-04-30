@@ -15,7 +15,7 @@ class review_create(CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-
+        #falta agregar categoria
         return super(review_create, self).form_valid(form)
 
     def get_success_url(self):
