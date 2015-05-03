@@ -1,0 +1,13 @@
+{% extends "base/base.html" %}
+{% block head_title %}ReviewSlayer - ReviewsComment{% endblock %}
+{% block body %}
+<h1> Comentario </h1>
+                <ul>
+                    <form action = "" method="post">
+                        {% csrf_token %}
+                        {{ comentario_form }}
+                        <input type="submit"value="Comentar"/>
+                    </form>
+                    <a href={% url "home" %}>Cancelar</a>
+                </ul>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base/base.html" %}
+{% block head_title %}ReviewSlayer - ListCategorias{% endblock %}
+{% block body %}
+    <div>
+        <div id="map-canvas"></div>
+        <div class="container-fluid" id="main">
+            <div class="row">
+                <div class="col-xs-8" id="left">
+                    <h2>Categorias</h2>
+                    <div class="panel panel-default">
+                        {% for categoria in categorias %}
+                                <li>{{ categoria.name }}</li>
+                        {% empty %}
+                            <p>No hay categorias disponibles</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

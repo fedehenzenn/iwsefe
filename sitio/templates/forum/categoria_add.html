@@ -1,0 +1,21 @@
+{% extends "base/base.html" %}
+{% block head_title %}ReviewSlayer - AddCategorias{% endblock %}
+{% block body %}
+    <div>
+        <div id="map-canvas"></div>
+        <div class="container-fluid" id="main">
+            <div class="row">
+                <div class="col-xs-8" id="left">
+                    <h2>Categorias</h2>
+                    <div class="panel panel-default">
+                        <form action = "" method="post">
+                            {% csrf_token %}
+                            {{ form }}
+                            <input type="submit"value="Crear"/>
+                        </form>
+                        <a href={% url "home" %}>Cancelar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
