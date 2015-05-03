@@ -1,13 +1,10 @@
-from django.core.urlresolvers import reverse
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-from forum.models import Gamereview
-
+from django.contrib.admin.views.decorators import staff_member_required
 
 def home(request):
     return render(request, 'home.html')
 
 
-@login_required
+@staff_member_required
 def restricted(request):
     return render(request, 'restricted.html', {})
