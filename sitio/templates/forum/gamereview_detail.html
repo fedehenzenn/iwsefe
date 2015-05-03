@@ -2,7 +2,6 @@
 {% block head_title %}ReviewSlayer - DetailReviews{% endblock %}
 {% block body %}
 <h1> Reviews - Detail </h1>
-<<<<<<< HEAD
     <h2> {{ review.title}} </h2>
         <p> {{ review.text }} </p>
             {% for comentario in comentarios%}
@@ -17,16 +16,4 @@
             {% else %}
                 <li><a href={% url "login" %}>Inicie sesion para comentar</a></li>
             {% endif %}
-=======
-    <h2> {{ review.tittle}} </h2>
-        <p> {{ review.text }} </p>
-{% for comentario in comentarios%}
-    <h2> {{ comentario.author }} </h2>
-    <p> {{ comentario.text }} </p>
-    <p> {{ comentario.date }} </p>
-{% endfor %}
-
-<!---<p> {{object.text}} </p> --->
-
->>>>>>> 645e25f75bf84b03bf7ceb31c22bc8e6c4ad0f11
 {% endblock %}
