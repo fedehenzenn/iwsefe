@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from forum.models import *
 from forum.forms import *
@@ -9,13 +8,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 import datetime
-=======
-from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
-from forum.models import Gamereview, Categoria, Comentario
-from django.shortcuts import render
-from django.core.urlresolvers import reverse
-from django.contrib.auth.decorators import login_required
->>>>>>> 645e25f75bf84b03bf7ceb31c22bc8e6c4ad0f11
+
 
 
 # Create your views here.
@@ -24,7 +17,6 @@ from django.contrib.auth.decorators import login_required
 #@login_required
 class review_create(CreateView):
     model = Gamereview
-<<<<<<< HEAD
     fields = ['title', 'date', 'text', 'cat']
     template_name ='forum/gamereview_form.html'
 
@@ -34,17 +26,6 @@ class review_create(CreateView):
 
     def get_success_url(self):
         return '/home'
-=======
-    fields = ['title', 'date', 'text']
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        #falta agregar categoria
-        return super(review_create, self).form_valid(form)
-
-    def get_success_url(self):
-        return '/'
->>>>>>> 645e25f75bf84b03bf7ceb31c22bc8e6c4ad0f11
 
 
 #@login_required
@@ -58,10 +39,6 @@ class review_listing(ListView):
     success_url = '/home'
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 645e25f75bf84b03bf7ceb31c22bc8e6c4ad0f11
 #@login_required
 class review_update(UpdateView):
     model = Gamereview
@@ -72,7 +49,6 @@ class review_update(UpdateView):
         })
 
 
-<<<<<<< HEAD
 def detail_review(request, pk):
     review = Gamereview.objects.all().filter(pk=pk)
     comentarios = Comentario.objects.exclude(author__isnull=True)
@@ -112,18 +88,4 @@ class categoria_add(CreateView):
     model = Categoria
     fields = ['name']
     template_name ='forum/categoria_add.html'
-=======
-#class review_detail(DetailView):
-    #model = Gamereview
-    #success_url = '/'
 
-def detail_review(request, pk):
-    review = Gamereview.objetct.all().filter(pk=pk)
-    comentarios = Comentario.objetct.all().filter(author=review.author)
-    return render(request, 'forum/gamereview_detail.html', {'review': review, 'comentarios': comentarios})
-
-
-class categoria_listing(ListView):
-    model = Categoria
-    success_url = '/'
->>>>>>> 645e25f75bf84b03bf7ceb31c22bc8e6c4ad0f11
