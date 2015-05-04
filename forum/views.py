@@ -62,7 +62,6 @@ def categorias_listing(request):
 @login_required
 def comentar(request, pk):
     review = Gamereview.objects.all().filter(pk=pk)[0]
-    comentarios = Comentario.objects.exclude(author__isnull=True)
     if request.method == 'POST':
         # formulario enviado
         comentario_form = ComentarioForm(request.POST)
