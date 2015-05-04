@@ -63,24 +63,24 @@ def categorias_listing(request):
 def comentar(request, pk):
     review = Gamereview.objects.all().filter(pk=pk)[0]
     comentarios = Comentario.objects.exclude(author__isnull=True)
-    if request.method == 'post':
+    if request.method == 'POST':
         # formulario enviado
-        cometario_form = ComentarioForm(request.post)
+        comentario_form = ComentarioForm(request.POST)
 
         if comentario_form.is_valid():
             # formulario validado correctamente
-            cometario_form.instance.date = datetime.datetime.now()
-            cometario_form.instance.author = request.user
-            cometario_form.instance.review = review
-            cometario_form.save()
+            comentario_form.instance.date = datetime.datetime.now()
+            comentario_form.instance.author = request.user
+            comentario_form.instance.review = review
+            comentario_form.save()
 
-            return HttpResponseRedirect('forum/gamereview_detail.html', {'review': review, 'comentarios': comentarios})
+            return HttpResponseRedirect(reverse('detail',args=[review.pk]))
 
     else:
         # formulario inicial
-        cometario_form = ComentarioForm(instance=request.user)
+        comentario_form = ComentarioForm(instance=request.user)
 
-    return render_to_response('forum/gamereview_post.html', { 'cometario_form': cometario_form },
+    return render_to_response('forum/gamereview_post.html', { 'comentario_form': comentario_form },
         context_instance=RequestContext(request))
 
 

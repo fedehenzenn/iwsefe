@@ -7,5 +7,5 @@ import datetime
 class ComentarioForm(ModelForm):
     class Meta:
         model = Comentario
-        fields = ['text', 'date']
+        fields = ['text']
 
