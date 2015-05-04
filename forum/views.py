@@ -50,7 +50,7 @@ class review_update(UpdateView):
 
 
 def detail_review(request, pk):
-    review = Gamereview.objects.all().filter(pk=pk)
+    review = Gamereview.objects.all().filter(pk=pk)[0]
     comentarios = Comentario.objects.exclude(author__isnull=True)
     return render(request, 'forum/gamereview_detail.html', {'review': review, 'comentarios': comentarios, 'pk' : pk})
 
@@ -61,7 +61,7 @@ def categorias_listing(request):
 
 @login_required
 def comentar(request, pk):
-    review = Gamereview.objects.all().filter(pk=pk)
+    review = Gamereview.objects.all().filter(pk=pk)[0]
     comentarios = Comentario.objects.exclude(author__isnull=True)
     if request.method == 'post':
         # formulario enviado
