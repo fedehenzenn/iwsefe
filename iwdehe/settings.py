@@ -93,7 +93,10 @@ TEMPLATES = [
 ROOT_URLCONF = 'iwdehe.urls'
 
 WSGI_APPLICATION = 'iwdehe.wsgi.application'
+
+#auth
 LOGIN_REDIRECT_URL = '/home'
+LOGIN_URL = 'home/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
