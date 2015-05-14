@@ -11,15 +11,20 @@ from django.contrib.admin.views.decorators import staff_member_required
 import datetime
 
 
+class LoginRequieredMixin(object):
+    @classmethod
+    def as_view(cls, **initkwargs):
+        view = super(LoginRequieredMixin, cls).as_view(**initkwargs)
+        return login_required(view)
 
 # Create your views here.
 
 
 #@login_required
-class review_create(CreateView):
+class review_create(LoginRequieredMixin, CreateView):
     model = Gamereview
     fields = ['title', 'date', 'text', 'cat']
-    template_name ='forum/gamereview_form.html'
+    template_name = 'forum/gamereview_form.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
