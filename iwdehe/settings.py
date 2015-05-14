@@ -96,7 +96,7 @@ WSGI_APPLICATION = 'iwdehe.wsgi.application'
 
 #auth
 LOGIN_REDIRECT_URL = '/home'
-LOGIN_URL = 'home/'
+LOGIN_URL = '/home/account/login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
