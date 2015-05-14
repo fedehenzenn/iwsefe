@@ -35,7 +35,7 @@ class review_create(LoginRequieredMixin, CreateView):
 
 
 #@login_required
-class review_delete(DeleteView):
+class review_delete(LoginRequieredMixin, DeleteView):
     model = Gamereview
     success_url = '/home'
 
@@ -46,7 +46,7 @@ class review_listing(ListView):
 
 
 #@login_required
-class review_update(UpdateView):
+class review_update(LoginRequieredMixin, UpdateView):
     model = Gamereview
 
     def get_success_url(self):
@@ -89,7 +89,7 @@ def comentar(request, pk):
         context_instance=RequestContext(request))
 
 
-class categoria_add(CreateView):
+class categoria_add(LoginRequieredMixin, CreateView):
     model = Categoria
     fields = ['name']
     template_name ='forum/categoria_add.html'
