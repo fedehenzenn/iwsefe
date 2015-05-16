@@ -55,4 +55,4 @@ class Denuncia(models.Model):
     desc = models.TextField()
     date = models.DateTimeField()
     visto = models.BooleanField(default=False)
-    visto_por = models.User(null=True)
+    visto_por = models.ForeignKey(User, null=True)
