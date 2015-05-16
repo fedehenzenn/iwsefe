@@ -57,3 +57,9 @@ class Denuncia(models.Model):
     visto = models.BooleanField(default=False)
     visto_por = models.ForeignKey(User, null=True)
     review = models.ForeignKey(Gamereview, null=True)
+
+    def __unicode__(self):
+        return self.text
+
+    def __str__(self):
+        return self.text

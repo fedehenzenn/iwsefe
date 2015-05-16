@@ -94,3 +94,26 @@ class categoria_add(LoginRequieredMixin, CreateView):
     fields = ['name']
     template_name ='forum/categoria_add.html'
 
+@login_required
+def denunciar(request, pk):
+    review = Gamereview.objects.all().filter(pk=pk)[0]
+    if request.method == 'POST':
+        # formulario enviado
+        denuncia_form = DenunciaForm(request.POST)
+
+        if denuncia_form.is_valid():
+            # formulario validado correctamente
+            denuncia_form.instance.date = datetime.datetime.now()
+            denuncia_form.instance.visto_por = request.user
+            denuncia_form.instance.review = review
+            denuncia_form.instance.visto = True
+            denuncia_form.save()
+
+            return HttpResponseRedirect(reverse('detail',args=[review.pk]))
+
+    else:
+        # formulario inicial
+        denuncia_form = DenunciaForm(instance=request.user)
+
+    return render_to_response('forum/denuncia_form.html', { 'denuncia_form': denuncia_form },
+        context_instance=RequestContext(request))
