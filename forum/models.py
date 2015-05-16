@@ -56,3 +56,4 @@ class Denuncia(models.Model):
     date = models.DateTimeField()
     visto = models.BooleanField(default=False)
     visto_por = models.ForeignKey(User, null=True)
+    review = models.ForeignKey(Gamereview, null=True)
