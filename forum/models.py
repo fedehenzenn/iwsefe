@@ -43,10 +43,16 @@ class Comentario(models.Model):
     author = models.ForeignKey(User)
     text = models.TextField()
     review = models.ForeignKey(Gamereview, related_name="comentarios")
-    
+
     def __unicode__(self):
         return self.text
 
     def __str__(self):
         return self.text
 
+
+class Denuncia(models.Model):
+    desc = models.TextField()
+    date = models.DateTimeField()
+    visto = models.BooleanField(default=False)
+    visto_por = models.User(null=True)
