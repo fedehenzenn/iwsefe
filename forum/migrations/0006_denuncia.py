@@ -20,6 +20,7 @@ class Migration(migrations.Migration):
                 ('desc', models.TextField()),
                 ('date', models.DateTimeField()),
                 ('visto', models.BooleanField(default=False)),
+                ('review', models.ForeignKey(to='forum.Gamereview', null=True)),
                 ('visto_por', models.ForeignKey(to=settings.AUTH_USER_MODEL, null=True)),
             ],
         ),
