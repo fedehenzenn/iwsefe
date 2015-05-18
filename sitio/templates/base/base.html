@@ -16,7 +16,9 @@
                 </div>
                 <div>
                     <ul class="nav navbar-nav navbar-right">
+
                       <a class="navbar-brand" href={% url "home" %}>Home</a>
+                      <a class="navbar-brand" href="/home/account/signup">Registrese</a>
                       <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">
                           Menu de navegacion <b class="caret"></b>
@@ -31,7 +33,7 @@
                         {% else %}
                             <ul class="dropdown-menu">
                               <li><a href={% url "login" %}>Iniciar sesion</a></li>
-                              <li><a href={% url "listing" %}>Listado de reviews</a></li>
+                              <li><a href={% url "categorias" %}>Categorias existentes</a></li>
                             </ul>
                         {% endif %}
                       </li>
