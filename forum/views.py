@@ -106,7 +106,6 @@ def denunciar(request, pk):
             denuncia_form.instance.date = datetime.datetime.now()
             denuncia_form.instance.visto_por = request.user
             denuncia_form.instance.review = review
-            denuncia_form.instance.visto = True
             denuncia_form.save()
 
             return HttpResponseRedirect(reverse('detail',args=[review.pk]))

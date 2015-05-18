@@ -53,13 +53,15 @@ AUTHENTICATION_BACKENDS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    # Required by `allauth` template tags
-
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
-    # `allauth` specific context processors
     'allauth.account.context_processors.account',
-    'django.contrib.auth.context_processors.auth'
-    #'allauth.socialaccount.context_processors.socialaccount',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -73,11 +75,12 @@ MIDDLEWARE_CLASSES = (
 )
 
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'sitio/templates'),],
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -88,7 +91,6 @@ TEMPLATES = [
         },
     },
 ]
-
 
 ROOT_URLCONF = 'iwdehe.urls'
 
