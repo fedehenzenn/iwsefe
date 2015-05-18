@@ -60,7 +60,7 @@ class Denuncia(models.Model):
     review = models.ForeignKey(Gamereview, null=True)
 
     def __unicode__(self):
-        return self.text
+        return self.desc
 
     def __str__(self):
-        return self.text
+        return self.desc
