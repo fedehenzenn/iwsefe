@@ -28,6 +28,7 @@ class Gamereview(models.Model):
     title = models.CharField(max_length=50)
     date = models.DateTimeField()
     text = models.TextField()
+    estado = models.CharField(max_length=50)
     author = models.ForeignKey(User)
     cat = models.ForeignKey(Categoria, null=True, blank=True)
 

@@ -29,6 +29,11 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+#GRAPH_MODELS = {
+  #'all_applications': True,
+  #'group_models': True,
+#}
+
 INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
@@ -41,6 +46,7 @@ INSTALLED_APPS = (
     'allauth.account',
 #    'allauth.socialaccount',
     'twitter_bootstrap',
+#    'django_extensions',
     'sitio',
     'forum',
 )

@@ -9,7 +9,12 @@
                     <h2>Categorias</h2>
                     <div class="panel panel-default">
                         {% for categoria in categorias %}
-                                <li>{{ categoria.name }}</li>
+                                <h4>{{ categoria.name }}</h4>
+                                {% for review in reviews %}
+                                    {% if review.cat == categoria %}
+                                        <li> <a href ={% url "forum.views.detail_review"  pk=review.pk%}> {{ review.title }}</a> </li>
+                                    {% endif %}
+                                {% endfor %}
                         {% empty %}
                             <p>No hay categorias disponibles</p>
                         {% endfor %}

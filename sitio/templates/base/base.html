@@ -24,7 +24,6 @@
                         {% if user.is_authenticated %}
                             <ul class="dropdown-menu">
                               <li><a href={% url "logout" %}>Cerrar sesion</a></li>
-                              <li><a href={% url "listing" %}>Listado de reviews</a></li>
                               <li><a href={% url "create" %}>Crear reviews</a></li>
                               <li><a href={% url "categorias" %}>Categorias existentes</a></li>
                               <li><a href={% url "categoria_add" %}>Crear categorias</a></li>

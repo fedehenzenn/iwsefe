@@ -24,6 +24,7 @@ class LoginRequieredMixin(object):
 class review_create(LoginRequieredMixin, CreateView):
     model = Gamereview
     fields = ['title', 'date', 'text', 'cat']
+    model.estado = "Publicado"
     template_name = 'forum/gamereview_form.html'
 
     def form_valid(self, form):
@@ -62,7 +63,8 @@ def detail_review(request, pk):
 
 def categorias_listing(request):
     categorias = Categoria.objects.all()
-    return render(request, 'forum/categoria_list.html', { 'categorias': categorias })
+    reviews = Gamereview.objects.all()
+    return render(request, 'forum/categoria_list.html', {'categorias': categorias, 'reviews' : reviews})
 
 
 @login_required

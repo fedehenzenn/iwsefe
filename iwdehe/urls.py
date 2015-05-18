@@ -19,6 +19,6 @@ urlpatterns = patterns('',
     url(r'^home/listreviews/(?P<pk>\d+)/$', 'forum.views.detail_review', name='detail'),
     url(r'^home/listreviews/comment/(?P<pk>\d+)/$', 'forum.views.comentar', name='comment'),
     url(r'^home/listreviews/denunciar/(?P<pk>\d+)/$', 'forum.views.denunciar', name='denunciar'),
-#    url(r'^(?P\d+)/update$', review_update.as_view(), name='update'),
-#    url(r'^(?P\d+)/delete$', review_delete.as_view(), name='delete'),
+    url(r'^home/(?P<pk>\d+)/update$', review_update.as_view(), name='update'),
+    url(r'^home/(?P<pk>\d+)/delete$', review_delete.as_view(), name='delete'),
     )
