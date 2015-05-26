@@ -59,12 +59,30 @@ class review_update(LoginRequieredMixin, UpdateView):
 def detail_review(request, pk):
     review = Gamereview.objects.all().filter(pk=pk)[0]
     comentarios = Comentario.objects.exclude(author__isnull=True)
-    return render(request, 'forum/gamereview_detail.html', {'review': review, 'comentarios': comentarios, 'pk' : pk})
+    if request.method == 'POST':
+        # formulario enviado
+        comentario_form = ComentarioForm(request.POST)
+
+        if comentario_form.is_valid():
+            # formulario validado correctamente
+            comentario_form.instance.date = datetime.datetime.now()
+            comentario_form.instance.author = request.user
+            comentario_form.instance.review = review
+            comentario_form.save()
+            return HttpResponseRedirect(reverse('detail', args=[review.pk]))
+    else:
+        # formulario inicial
+        comentario_form = ComentarioForm(instance=request.user)
+    return render(request, 'forum/gamereview_detail.html', {'review': review,
+         'comentarios': comentarios, 'pk': pk,
+         'form': comentario_form},
+              )
+
 
 def categorias_listing(request):
     categorias = Categoria.objects.all()
     reviews = Gamereview.objects.all()
-    return render(request, 'forum/categoria_list.html', {'categorias': categorias, 'reviews' : reviews})
+    return render(request, 'forum/categoria_list.html', {'categorias': categorias, 'reviews': reviews})
 
 
 @login_required
