@@ -12,7 +12,12 @@
                 <p> No hay comentarios. Sea el primero en comentar </p>
             {% endfor %}
             {% if user.is_authenticated %}
-                <a href = {% url "comment"  pk=pk%}> Comentar </a>
+                <hr>
+                <form action = "" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit"value="Comentar"/>
+                </form>
                 <a href = {% url "denunciar"  pk=pk%}> Denunciar </a>
             {% else %}
                 <li><a href={% url "login" %}>Inicie sesion para comentar</a></li>
