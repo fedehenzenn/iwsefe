@@ -4,7 +4,7 @@ from forum.models import Denuncia
 
 class DenunciaAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['review', 'visto_por']}),
+        (None, {'fields': ['review', 'visto','visto_por']}),
         ('Date information', {'fields': ['desc'], 'classes':['collapse']}),
         ]
 
