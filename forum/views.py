@@ -72,7 +72,10 @@ def detail_review(request, pk):
             return HttpResponseRedirect(reverse('detail', args=[review.pk]))
     else:
         # formulario inicial
-        comentario_form = ComentarioForm(instance=request.user)
+        if request.user.is_authenticated():
+            comentario_form = ComentarioForm(instance=request.user)
+        else:
+            comentario_form = None
     return render(request, 'forum/gamereview_detail.html', {'review': review,
          'comentarios': comentarios, 'pk': pk,
          'form': comentario_form},
@@ -103,7 +106,7 @@ def comentar(request, pk):
 
     else:
         # formulario inicial
-        comentario_form = ComentarioForm(instance=request.user)
+         comentario_form = ComentarioForm(instance=request.user)
 
     return render_to_response('forum/gamereview_post.html', { 'comentario_form': comentario_form },
         context_instance=RequestContext(request))
