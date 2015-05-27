@@ -1,18 +1,28 @@
 {% extends "base/base.html" %}
 {% block head_title %}ReviewSlayer - DetailReviews{% endblock %}
-{% block body %}
+{% block content %}
 <h1> Reviews - Detail </h1>
-    <h2> {{ review.title}} </h2>
-        <p> {{ review.text }} </p>
-            {% for comentario in comentarios%}
-                <h2> {{ comentario.author }} </h2>
-                <p> {{ comentario.text }} </p>
-                <p> {{ comentario.date }} </p>
-            {% empty %}
-                <p> No hay comentarios. Sea el primero en comentar </p>
-            {% endfor %}
+    <div id = "titulo">
+        <h2> {{ review.title}} </h2>
+                <p> {{ review.text }} </p>
+            <div id = "comentarios">
+                {% for comentario in comentarios%}
+                    <div id = "usuario">
+                        <p> User: {{ comentario.author }} </p>
+                    </div>
+                    <p> Comentario:</p>
+                    <div id = "comentario">
+                         <p>{{ comentario.text }} </p>
+                    </div>
+                    <p> Fecha: {{ comentario.date }} </p>
+                    <hr>
+                {% empty %}
+                    <p> No hay comentarios. Sea el primero en comentar </p>
+                {% endfor %}
+            </div>
+    </div>
             {% if user.is_authenticated %}
-                <hr>
+                <hr id= "separacion">
                 <form action = "" method="post">
                     {% csrf_token %}
                     {{ form.as_p }}

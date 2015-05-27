@@ -33,6 +33,7 @@
                               <li><a href={% url "create" %}>Crear reviews</a></li>
                               <li><a href={% url "categorias" %}>Categorias existentes</a></li>
                               <li><a href={% url "categoria_add" %}>Crear categorias</a></li>
+                              <li><a href={% url "restricted" %}>Area moderacion</a></li>
                             </ul>
                         {% else %}
                             <ul class="dropdown-menu">
@@ -58,9 +59,8 @@
         {% endif %}
     {% endblock %}
     </div>
-    <div id="footer">
-        <p> Copyright © 2015 Creado por Denardi-Henzenn</p>
-    </div>
-
   </body>
+  <div id="footer">
+    <p> Copyright © 2015 Creado por Denardi-Henzenn</p>
+  </div>
 </html>
