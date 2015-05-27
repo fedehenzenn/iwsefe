@@ -1,0 +1,39 @@
+body  {
+    background: black url('../img/pacman.jpeg') no-repeat fixed bottom right;
+}
+@font-face { font-family: play;
+                 src: url('../font/Play-Bold.ttf');
+               }
+#section {
+    width:1200px;
+    float:center;
+    padding:10px;
+    background-color: #D8D8D8;
+    margin-left: 10em;
+    margin-right: 10em;
+    font-family: play;
+    font-size: 18px;
+    box-shadow: 31px 16px 51px 12px rgba(255,255,255,0.54);
+    border-style: inset;
+    border-color: #DBA901;
+}
+#footer {
+    font-family: play;
+    font-size: 18px;
+    color: #FFFFFF;
+    float: center;
+    padding:10px;
+}
+#hot {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:100px auto;
+    width:100px auto;
+    float:right;
+    padding:10px;
+    font-family: play;
+    font-size: 18px;
+    box-shadow: 31px 16px 51px 12px rgba(255,255,255,0.54);
+    border-style: inset;
+    border-color: #DBA901;
+}

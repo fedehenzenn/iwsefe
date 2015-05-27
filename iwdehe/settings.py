@@ -81,11 +81,10 @@ MIDDLEWARE_CLASSES = (
 )
 
 
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'sitio/templates'),],
+        'DIRS': [os.path.join(BASE_DIR, 'sitio/templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,7 +140,7 @@ SITE_ID = 1
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'sitio/static')
 
 if os.environ.get('HEROKU', False):
     #settings heroku

@@ -1,10 +1,12 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
   <head>
     <title>{% block head_title %}{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   </head>
@@ -16,9 +18,11 @@
                 </div>
                 <div>
                     <ul class="nav navbar-nav navbar-right">
-
                       <a class="navbar-brand" href={% url "home" %}>Home</a>
-                      <a class="navbar-brand" href="/home/account/signup">Registrese</a>
+                      {% if user.is_authenticated %}
+                      {% else %}
+                          <a class="navbar-brand" href="/home/account/signup">Registrese</a>
+                      {% endif %}
                       <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">
                           Menu de navegacion <b class="caret"></b>
@@ -41,11 +45,22 @@
                 </div>
           </div>
         </nav>
+    <div id="hot">
+        <p> Lo mas visto </p>
+        <p> Lo mas comentado </p>
+        <p> Lo mas puntuado </p>
+    </div>
     {% block body %}{% endblock %}
+    <div id="section">
     {% block content %}
-    {% if user.is_authenticated %}
-        <p> Hola, {{ user.username }} </p>
-    {% endif %}
+        {% if user.is_authenticated %}
+            <p> Hola, User: {{ user.username }}. Bienvenido a ReviewSlayer </p>
+        {% endif %}
     {% endblock %}
+    </div>
+    <div id="footer">
+        <p> Copyright © 2015 Creado por Denardi-Henzenn</p>
+    </div>
+
   </body>
 </html>
