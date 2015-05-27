@@ -65,6 +65,7 @@ class Denuncia(models.Model):
     def __str__(self):
         return self.desc
 
+
 class Puntuacion(models.Model):
     review = models.ForeignKey(Gamereview)
     usuario = models.ForeignKey(User)
