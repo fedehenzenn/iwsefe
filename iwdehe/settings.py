@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
 #    'allauth.socialaccount',
+    'haystack',
     'twitter_bootstrap',
 #    'django_extensions',
     'sitio',
@@ -120,6 +121,16 @@ DATABASES = {
     }
 }
 
+
+#motor de busqueda
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    },
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -141,6 +152,7 @@ SITE_ID = 1
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'sitio/static')
+
 
 if os.environ.get('HEROKU', False):
     #settings heroku
