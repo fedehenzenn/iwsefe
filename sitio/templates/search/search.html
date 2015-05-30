@@ -20,7 +20,7 @@
             <h3>Resultados</h3>
 
             {% for result in page.object_list %}
-                <p>{{ result.object.titulo }}</p>
+                <p>{{ result.object.title }}</p>
             {% empty %}
                 <p>No hay resultados.</p>
             {% endfor %}
