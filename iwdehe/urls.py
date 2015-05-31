@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from forum.views import *
+from django.http import HttpResponse
 
 
 
@@ -22,4 +23,6 @@ urlpatterns = patterns('',
     url(r'^home/listreviews/denunciar/(?P<pk>\d+)/$', 'forum.views.denunciar', name='denunciar'),
     url(r'^home/(?P<pk>\d+)/update$', review_update.as_view(), name='update'),
     url(r'^home/(?P<pk>\d+)/delete$', review_delete.as_view(), name='delete'),
+    url(r'^robots.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /", mimetype="text/plain")),
     )
+
