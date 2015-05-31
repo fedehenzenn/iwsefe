@@ -20,7 +20,9 @@
             <h3>Resultados</h3>
 
             {% for result in page.object_list %}
-                <p>{{ result.object.title }}</p>
+                <p>
+                    <a href = "{{result.object.get_absolute_url }}"> {{ result.object.title }}</a>
+                </p>
             {% empty %}
                 <p>No hay resultados.</p>
             {% endfor %}
