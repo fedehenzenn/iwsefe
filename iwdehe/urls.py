@@ -6,7 +6,7 @@ from forum.views import *
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^search', include('haystack.urls')),
+    url(r'^search/', include('haystack.urls')),
     url(r'^$', 'sitio.views.home', name='nada'),
     url(r'^home/$', 'sitio.views.home', name='home'),
     url(r'^home/account/', include('allauth.urls')),
