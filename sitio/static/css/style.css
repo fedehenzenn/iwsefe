@@ -28,18 +28,6 @@ body  {
     width:100%;
     position: absolute;
 }
-#hot {
-    line-height:30px auto;
-    background-color:#eeeeee;
-    height:100px auto;
-    width:100px auto;
-    float:right;
-    padding:10px;
-    font-family: play;
-    font-size: 18px;
-    border-style: inset;
-    border-color: #40FF00;
-}
 #categoria {
     width:500px auto;
     float:center;
