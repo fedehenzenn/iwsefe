@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from forum.models import Gamereview
 
 
 def home(request):
-    return render(request, 'home.html')
+    reviews = Gamereview.objects.all()
+    return render(request, 'home.html', {'reviews': reviews})
 
 
 def restricted(request):
