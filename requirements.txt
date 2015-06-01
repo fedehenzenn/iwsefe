@@ -10,3 +10,4 @@ static==1.1.1
 wsgiref==0.1.2
 django-haystack
 elasticsearch
+pillow
