@@ -4,6 +4,8 @@
   <head>
     <title>{% block head_title %}{% endblock %}</title>
     <meta charset="utf-8">
+    {% block head %}
+    {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -15,6 +17,7 @@
           <div class="container-fluid">
                 <div class="navbar-header">
                   <a class="navbar-brand">ReviewSlayer</a>
+                  <a class="navbar-brand" href="/search" >Busqueda</a>
                 </div>
                 <div>
                     <ul class="nav navbar-nav navbar-right">
