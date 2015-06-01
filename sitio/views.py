@@ -7,3 +7,7 @@ def home(request):
 
 def restricted(request):
     return render(request, 'restricted.html', {})
+
+
+def userprofile(request):
+    return render(request, 'userprofile.html', {})

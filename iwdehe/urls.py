@@ -24,5 +24,6 @@ urlpatterns = patterns('',
     url(r'^home/(?P<pk>\d+)/update$', review_update.as_view(), name='update'),
     url(r'^home/(?P<pk>\d+)/delete$', review_delete.as_view(), name='delete'),
     url(r'^robots.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /", mimetype="text/plain")),
+    url(r'^home/userprofile$', 'sitio.views.userprofile', name='userprofile'),
     )
 
