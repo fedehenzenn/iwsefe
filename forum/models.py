@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
 from datetime import datetime
+from django.utils import timezone
 
 today = datetime.now()
 
@@ -27,7 +28,7 @@ class Categoria(models.Model):
 
 class Gamereview(models.Model):
     title = models.CharField(max_length=50)
-    date = models.DateTimeField(default=today)
+    date = models.DateTimeField(default=timezone.now)
     text = models.TextField()
     estado = models.CharField(max_length=50)
     author = models.ForeignKey(User)
@@ -56,7 +57,7 @@ class Comentario(models.Model):
 
 class Denuncia(models.Model):
     desc = models.TextField()
-    date = models.DateTimeField(default=today)
+    date = models.DateTimeField(default=timezone.now)
     visto = models.BooleanField(default=False)
     visto_por = models.ForeignKey(User, null=True)
     review = models.ForeignKey(Gamereview, null=True)
