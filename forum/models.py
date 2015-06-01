@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
+from datetime import datetime
 
-
+today = datetime.now()
 
 # Create your models here.
 
@@ -26,7 +27,7 @@ class Categoria(models.Model):
 
 class Gamereview(models.Model):
     title = models.CharField(max_length=50)
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=today)
     text = models.TextField()
     estado = models.CharField(max_length=50)
     author = models.ForeignKey(User)
@@ -55,7 +56,7 @@ class Comentario(models.Model):
 
 class Denuncia(models.Model):
     desc = models.TextField()
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=today)
     visto = models.BooleanField(default=False)
     visto_por = models.ForeignKey(User, null=True)
     review = models.ForeignKey(Gamereview, null=True)
