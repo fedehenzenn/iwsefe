@@ -54,6 +54,10 @@ class Comentario(models.Model):
     def __str__(self):
         return self.text
 
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('detail', args=[self.review.pk])
+
 
 class Denuncia(models.Model):
     desc = models.TextField()
