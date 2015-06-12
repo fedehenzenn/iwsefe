@@ -23,6 +23,10 @@ class UserProfile(models.Model):
     class Meta:
         db_table = 'user_profile'
 
+    def __str__(self):
+        return self.nombre
+
+
     def account_verified(self):
         if self.user.is_authenticated:
             result = EmailAddress.objects.filter(email=self.user.email)
