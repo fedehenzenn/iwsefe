@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
+from allauth.account.decorators import verified_email_required
 import datetime
 
 
@@ -16,11 +17,16 @@ class LoginRequieredMixin(object):
         view = super(LoginRequieredMixin, cls).as_view(**initkwargs)
         return login_required(view)
 
+class EmailRequiered(object):
+    @classmethod
+    def as_view(cls, **initkwargs):
+        view = super(EmailRequiered, cls).as_view(**initkwargs)
+        return verified_email_required(view)
 # Create your views here.
 
 
 #@login_required
-class review_create(LoginRequieredMixin, CreateView):
+class review_create(EmailRequiered, CreateView):
     model = Gamereview
     fields = ['title', 'date', 'text', 'cat']
     model.estado = "Publicado"
@@ -29,6 +35,7 @@ class review_create(LoginRequieredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super(review_create, self).form_valid(form)
+
 
     def get_success_url(self):
         return '/home'
