@@ -28,14 +28,13 @@ class EmailRequiered(object):
 #@login_required
 class review_create(EmailRequiered, CreateView):
     model = Gamereview
-    fields = ['title', 'date', 'text', 'cat']
+    fields = ['title', 'text', 'cat']
     model.estado = "Publicado"
     template_name = 'forum/gamereview_form.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super(review_create, self).form_valid(form)
-
 
     def get_success_url(self):
         return '/home'
