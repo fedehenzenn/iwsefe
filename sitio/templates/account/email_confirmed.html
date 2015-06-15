@@ -3,15 +3,15 @@
 {% load i18n %}
 {% load account %}
 
-{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+{% block head_title %}{% trans "Confirmar correo electronico" %}{% endblock %}
 
 
 {% block content %}
 
-<h1>{% trans "Confirm E-mail Address" %}</h1>
+<h1>{% trans "Confirmar correo electronico" %}</h1>
 
 {% user_display confirmation.email_address.user as user_display %}
 
-<p>{% blocktrans with confirmation.email_address.email as email %}You have confirmed that <a href="mailto:{{email}}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktrans %}</p>
+<p>{% blocktrans con confirmation.email_address.email as email %} Usted ha confirmado que <a href="mailto:{{email}}">{{ email }}</a> es su direccion de e-mail {{ user_display }}.{% endblocktrans %}</p>
 
 {% endblock %}
