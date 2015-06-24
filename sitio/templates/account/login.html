@@ -10,8 +10,8 @@
 <h1>{% trans "Sign In" %}</h1>
 
 {% if socialaccount.providers  %}
-<p>{% blocktrans with site.name as site_name %}Por favor inicie sesion con una de sus cuentas de usuario existente o, <a href="{{ signup_url }}">Crear cuenta</a>
-para {{site_name}} cuenta y abrir una sesión a continuación:{% endblocktrans %}</p>
+<p>{% blocktrans with site.name as site_name %}Por favor inicie sesion con una de sus cuentas de usuario existente o, haga click en el siguiente link <a href="{{ signup_url }}">Crear cuenta</a>
+para crear una cuenta en {{site_name}} y luego poder iniciar una sesión:{% endblocktrans %}</p>
 
 <div class="socialaccount_ballot">
 
@@ -26,8 +26,8 @@ para {{site_name}} cuenta y abrir una sesión a continuación:{% endblocktrans %
 {% include "socialaccount/snippets/login_extra.html" %}
 
 {% else %}
-<p>{% blocktrans %}Si no ha creado una cuenta, por favor
-<a href="{{ signup_url }}">Crear cuenta</a> primero.{% endblocktrans %}</p>
+<p>{% blocktrans %}Si no ha creado una cuenta, por favor haga click en el siguiente link
+<a href="{{ signup_url }}"> Crear cuenta</a> primero.{% endblocktrans %}</p>
 {% endif %}
 
 <form class="login" method="POST" action="{% url 'account_login' %}">

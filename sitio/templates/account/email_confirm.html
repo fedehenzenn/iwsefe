@@ -4,11 +4,11 @@
 {% load i18n %}
 {% load account %}
 
-{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+{% block head_title %}{% trans "Confirmar casilla de E-mail" %}{% endblock %}
 
 
 {% block content %}
-<h1>{% trans "Confirm E-mail Address" %}</h1>
+<h1>{% trans "Confirmar casilla de E-mail" %}</h1>
 
 {% if confirmation %}
 
@@ -18,14 +18,14 @@
 
 <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
 {% csrf_token %}
-    <button type="submit">{% trans 'Confirm' %}</button>
+    <button type="submit">{% trans 'Confirmar' %}</button>
 </form>
 
 {% else %}
 
 {% url 'account_email' as email_url %}
 
-<p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url}}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
+<p>{% blocktrans %}Este enlace de confirmación por e-mail caducado o no es válido. Por Favor haga click en el siguiente enlace <a href="{{ email_url}}">, para enviar nuevamente la confirmacion de correo</a>.{% endblocktrans %}</p>
 
 {% endif %}
 

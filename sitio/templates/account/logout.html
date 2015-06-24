@@ -8,7 +8,7 @@
 {% block content %}
 <h1>{% trans "Sign Out" %}</h1>
 
-<p>{% trans '¿Seguro que deseas cerrar la sesion?' %}</p>
+<p>{% trans '¿Seguro desea cerrar sesion?' %}</p>
 
 <form method="post" action="{% url 'account_logout' %}">
   {% csrf_token %}

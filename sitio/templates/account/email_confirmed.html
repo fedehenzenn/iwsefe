@@ -12,6 +12,6 @@
 
 {% user_display confirmation.email_address.user as user_display %}
 
-<p>{% blocktrans con confirmation.email_address.email as email %} Usted ha confirmado que <a href="mailto:{{email}}">{{ email }}</a> es su direccion de e-mail {{ user_display }}.{% endblocktrans %}</p>
+<p>{% blocktrans con confirmation.email_address.email as email %} Usted ha confirmado que <a href="mailto:{{email}}">{{ email }}</a> es su direccion de e-mail de la cuenta {{ user_display }}.{% endblocktrans %}</p>
 
 {% endblock %}

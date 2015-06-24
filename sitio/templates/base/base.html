@@ -21,7 +21,7 @@
                 </div>
                 <div>
                     <ul class="nav navbar-nav navbar-right">
-                      <a class="navbar-brand" href={% url "home" %}>Home</a>
+                      <a class="navbar-brand" href={% url "home" %}>Inicio</a>
                       {% if user.is_authenticated %}
                       {% else %}
                           <a class="navbar-brand" href="/home/account/signup">Registrese</a>
