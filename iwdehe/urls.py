@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from forum.views import *
 from django.http import HttpResponse
+from django.contrib.auth.decorators import permission_required
 
 
 
@@ -16,8 +17,9 @@ urlpatterns = patterns('',
     url(r'^restricted/', 'sitio.views.restricted', name='restricted'),
     url(r'^home/listreviews/$', review_listing.as_view(), name='listing'),
     url(r'^home/categorias/$', 'forum.views.categorias_listing', name='categorias'),
-    url(r'^home/create/$', review_create.as_view(), name='create'),
-    url(r'^home/categorias/add/$', categoria_add.as_view(), name='categoria_add'),
+    url(r'^home/create/$', 'forum.views.review_create', name='create'),
+    url(r'^home/categorias/add/$', permission_required('is_staff')(categoria_add.as_view()), name='categoria_add'),
+    url(r'^cat_error/', 'forum.views.cat_error', name='cat_error'),
     url(r'^home/listreviews/(?P<pk>\d+)/$', 'forum.views.detail_review', name='detail'),
     url(r'^home/listreviews/comment/(?P<pk>\d+)/$', 'forum.views.comentar', name='comment'),
     url(r'^home/listreviews/denunciar/(?P<pk>\d+)/$', 'forum.views.denunciar', name='denunciar'),
