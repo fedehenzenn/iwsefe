@@ -1,9 +1,12 @@
 {% extends "base/base.html" %}
 {% block content %}
-<form action = "" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit"value="Create"/>
-</form>
+<ul>
+    <form action = "" method="post">
+        {% csrf_token %}
+        {{ review_form }}
+        <input type="submit"value="Create"/>
+    </form>
+    <a href={% url "home" %}>Cancelar</a>
+</ul>
 {% endblock %}
 
