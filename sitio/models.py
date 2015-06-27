@@ -14,7 +14,6 @@ class UserProfile(models.Model):
     fecha = models.DateTimeField(default=timezone.now)
     nombre = models.TextField()
     apellido = models.TextField()
-    fecha_alta = models.DateTimeField(default=timezone.now())
     about_me = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
