@@ -6,6 +6,9 @@ def home(request):
     reviews = Gamereview.objects.all()
     return render(request, 'home.html', {'reviews': reviews})
 
+def cat_error(request):
+    return render(request, 'cat_error.html', {})
+
 
 def restricted(request):
     return render(request, 'restricted.html', {})
