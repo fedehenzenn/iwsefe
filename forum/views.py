@@ -8,6 +8,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from allauth.account.decorators import verified_email_required
+from suit_redactor.widgets import RedactorWidget
 import datetime
 
 
@@ -29,6 +30,9 @@ class EmailRequiered(object):
 class review_create(EmailRequiered, CreateView):
     model = Gamereview
     fields = ['title', 'text', 'cat']
+    widgets = {
+            'text': RedactorWidget(editor_options={'lang': 'es'})
+    }
     model.estado = "Publicado"
     template_name = 'forum/gamereview_form.html'
 

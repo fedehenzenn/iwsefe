@@ -1,7 +1,15 @@
 from django.forms import ModelForm
-from forum.models import Comentario, Denuncia
-from django.contrib.auth.models import User
-import datetime
+from forum.models import Comentario, Denuncia, Gamereview
+from suit_redactor.widgets import RedactorWidget
+
+
+class ReviewForm (ModelForm):
+    class Meta:
+        model = Gamereview
+        fields = ['title', 'text']
+        widgets = {
+            'text': RedactorWidget(editor_options={'lang': 'es'})
+        }
 
 
 class ComentarioForm(ModelForm):
