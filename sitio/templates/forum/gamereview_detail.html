@@ -1,13 +1,58 @@
 {% extends "base/base.html" %}
+
+
 {% block head_title %}ReviewSlayer - DetailReviews{% endblock %}
 {% block head %}
 <meta name ="Keywords" content = "review,game" />
 {% endblock %}
+
 {% block content %}
 <h1> Reviews - Detail </h1>
     <div id = "titulo">
-        <h2> {{ review.title}} </h2>
+        <h2> {{ review.title }} </h2>
                 <p> {{ review.text }} </p>
+                <ul>
+                    {% if x == 1 %}
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    {% endif %}
+                    {% if x == 2 %}
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    {% endif %}
+                    {% if x == 3 %}
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    {% endif %}
+                    {% if x == 4 %}
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    {% endif %}
+                    {% if x == 5 %}
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    {% endif %}
+                </ul>
+                <form action = "" method="post">
+                    {% csrf_token %}
+                    {{ votar.as_p }}
+                    <input type="submit"value="Votar"/>
+                </form>
             <div id = "comentarios">
                 {% for comentario in comentarios%}
                     <div id = "usuario">

@@ -1,16 +1,20 @@
 from django.forms import ModelForm
-from forum.models import Comentario, Denuncia, Gamereview
-from suit_redactor.widgets import RedactorWidget
+from django import forms
+from forum.models import *
+from ckeditor.widgets import CKEditorWidget
+
+
+class VotarForm (ModelForm):
+    class Meta:
+        model = Voto
+        fields = ['valor']
 
 
 class ReviewForm (ModelForm):
+    text = forms.CharField(widget=CKEditorWidget())
     class Meta:
         model = Gamereview
-        fields = ['title', 'text']
-        widgets = {
-            'text': RedactorWidget(editor_options={'lang': 'es'})
-        }
-
+        fields = ['title', 'text', 'cat']
 
 class ComentarioForm(ModelForm):
     class Meta:

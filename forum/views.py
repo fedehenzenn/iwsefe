@@ -8,7 +8,6 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from allauth.account.decorators import verified_email_required
-from suit_redactor.widgets import RedactorWidget
 import datetime
 
 
@@ -27,22 +26,38 @@ class EmailRequiered(object):
 
 
 #@login_required
-class review_create(EmailRequiered, CreateView):
-    model = Gamereview
-    fields = ['title', 'text', 'cat']
-    widgets = {
-            'text': RedactorWidget(editor_options={'lang': 'es'})
-    }
-    model.estado = "Publicado"
-    template_name = 'forum/gamereview_form.html'
+#class review_create(EmailRequiered, CreateView):
+    #model = Gamereview
+    #fields = ['title', 'text', 'cat']
+    #model.estado = "Publicado"
+    #template_name = 'forum/gamereview_form.html'
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super(review_create, self).form_valid(form)
+    #def form_valid(self, form):
+        #form.instance.author = self.request.user
+        #return super(review_create, self).form_valid(form)
 
-    def get_success_url(self):
-        return '/home'
+    #def get_success_url(self):
+        #return '/home'
 
+
+def review_create(request):
+    if request.method == 'POST':
+        # formulario enviaedo
+        review_form = ReviewForm(request.POST)
+        if review_form.is_valid():
+            # formulario validado correctamente
+            review_form.instance.date = datetime.datetime.now()
+            review_form.instance.author = request.user
+            review_form.instance.estado = "publicado"
+            review_form.save()
+
+            return HttpResponseRedirect(reverse('create',args=[]))
+
+    else:
+        # formulario inicial
+         review_form = ReviewForm(instance=request.user)
+
+    return render_to_response('forum/gamereview_form.html', {'review_form': review_form}, context_instance=RequestContext(request))
 
 #@login_required
 class review_delete(LoginRequieredMixin, DeleteView):
@@ -67,10 +82,26 @@ class review_update(LoginRequieredMixin, UpdateView):
 
 def detail_review(request, pk):
     review = Gamereview.objects.all().filter(pk=pk)[0]
+    votos = Voto.objects.all().filter(review=review)
+    c = 1
+    v = 1
+    for voto in votos:
+        v = v + voto.valor
+        c = c + 1
+    x = v / c
+    e = 0
+    e = 5 - x
+    print (x)
     comentarios = Comentario.objects.exclude(author__isnull=True)
     if request.method == 'POST':
         # formulario enviado
         comentario_form = ComentarioForm(request.POST)
+        votar_form = VotarForm(request.POST)
+        if votar_form.is_valid():
+            votar_form.instance.author = request.user
+            votar_form.instance.review = review
+            votar_form.save()
+            return HttpResponseRedirect(reverse('detail', args=[review.pk]))
 
         if comentario_form.is_valid():
             # formulario validado correctamente
@@ -83,12 +114,13 @@ def detail_review(request, pk):
         # formulario inicial
         if request.user.is_authenticated():
             comentario_form = ComentarioForm(instance=request.user)
+            votar_form = VotarForm(instance=request.user)
         else:
             comentario_form = None
+            votar_form = None
     return render(request, 'forum/gamereview_detail.html', {'review': review,
-         'comentarios': comentarios, 'pk': pk,
-         'form': comentario_form},
-              )
+         'comentarios': comentarios, 'pk': pk, 'votos': votos,
+         'form': comentario_form, 'votar': votar_form, 'x': x, 'e': e},)
 
 
 def categorias_listing(request):
@@ -124,7 +156,12 @@ def comentar(request, pk):
 class categoria_add(LoginRequieredMixin, CreateView):
     model = Categoria
     fields = ['name']
-    template_name ='forum/categoria_add.html'
+    template_name = 'forum/categoria_add.html'
+    def form_valid(self, form):
+        return super(categoria_add, self).form_valid(form)
+    def get_success_url(self):
+        return '/home'
+
 
 @login_required
 def denunciar(request, pk):

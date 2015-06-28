@@ -5,8 +5,8 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import permission_required
 
 
-
 urlpatterns = patterns('',
+    url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^search/', include('haystack.urls'), name="search"),
     url(r'^$', 'sitio.views.home', name='nada'),
@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     url(r'^home/listreviews/$', review_listing.as_view(), name='listing'),
     url(r'^home/categorias/$', 'forum.views.categorias_listing', name='categorias'),
     url(r'^home/create/$', 'forum.views.review_create', name='create'),
-    url(r'^home/categorias/add/$', permission_required('is_staff')(categoria_add.as_view()), name='categoria_add'),
+    url(r'^home/categorias/add/$', categoria_add.as_view(), name='categoria_add'),
     url(r'^cat_error/', 'sitio.views.cat_error', name='cat_error'),
     url(r'^home/listreviews/(?P<pk>\d+)/$', 'forum.views.detail_review', name='detail'),
     url(r'^home/listreviews/comment/(?P<pk>\d+)/$', 'forum.views.comentar', name='comment'),
@@ -28,4 +28,3 @@ urlpatterns = patterns('',
     url(r'^robots.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /", content_type="text/plain")),
     url(r'^home/userprofile$', 'sitio.views.userprofile', name='userprofile'),
     )
-
