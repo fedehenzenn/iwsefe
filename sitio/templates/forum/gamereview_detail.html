@@ -48,25 +48,27 @@
                         <span class="glyphicon glyphicon-star"></span>
                     {% endif %}
                 </ul>
-                <form action = "" method="post">
-                    {% csrf_token %}
-                    {{ votar.as_p }}
-                    <input type="submit"value="Votar"/>
-                </form>
+                {% if user.is_authenticated %}
+                    <form action = "" method="post">
+                        {% csrf_token %}
+                        {{ votar.as_p }}
+                        <input type="submit"value="Votar"/>
+                    </form>
+                {% endif %}
             <div id = "comentarios">
-                {% for comentario in comentarios%}
-                    <div id = "usuario">
-                        <p> User: {{ comentario.author }} </p>
-                    </div>
-                    <p> Comentario:</p>
-                    <div id = "comentario">
-                         <p>{{ comentario.text }} </p>
-                    </div>
-                    <p> Fecha: {{ comentario.date }} </p>
-                    <hr>
-                {% empty %}
-                    <p> No hay comentarios. Sea el primero en comentar </p>
-                {% endfor %}
+                    {% for comentario in comentarios%}
+                        <div id = "usuario">
+                            <p> User: {{ comentario.author }} </p>
+                        </div>
+                        <p> Comentario:</p>
+                        <div id = "comentario">
+                             <p>{{ comentario.text }} </p>
+                        </div>
+                        <p> Fecha: {{ comentario.date }} </p>
+                        <hr>
+                    {% empty %}
+                        <p> No hay comentarios. Sea el primero en comentar </p>
+                    {% endfor %}
             </div>
     </div>
             {% if user.is_authenticated %}
