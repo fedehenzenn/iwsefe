@@ -40,6 +40,7 @@ class EmailRequiered(object):
         #return '/home'
 
 
+@verified_email_required
 def review_create(request):
     if request.method == 'POST':
         # formulario enviaedo
@@ -98,10 +99,15 @@ def detail_review(request, pk):
         comentario_form = ComentarioForm(request.POST)
         votar_form = VotarForm(request.POST)
         if votar_form.is_valid():
-            votar_form.instance.author = request.user
-            votar_form.instance.review = review
-            votar_form.save()
-            return HttpResponseRedirect(reverse('detail', args=[review.pk]))
+            bandera = False
+            for voto in votos:
+                if request.user == voto.author:
+                    bandera = True
+            if bandera == False:
+                votar_form.instance.author = request.user
+                votar_form.instance.review = review
+                votar_form.save()
+                return HttpResponseRedirect(reverse('detail', args=[review.pk]))
 
         if comentario_form.is_valid():
             # formulario validado correctamente
