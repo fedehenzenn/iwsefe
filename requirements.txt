@@ -11,3 +11,4 @@ wsgiref==0.1.2
 django-haystack
 elasticsearch
 pillow
+django-ckeditor
