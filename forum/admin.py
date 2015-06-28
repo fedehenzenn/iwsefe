@@ -1,5 +1,5 @@
 from django.contrib import admin
-from forum.models import Denuncia, Categoria
+from forum.models import Denuncia, Categoria, Gamereview
 
 
 class DenunciaAdmin(admin.ModelAdmin):
@@ -14,5 +14,10 @@ class DenunciaAdmin(admin.ModelAdmin):
 class AdminCategoria(admin.ModelAdmin):
     list_display = ['name']
 
+class AdminReview(admin.ModelAdmin):
+    list_display = ['title']
+
+
 admin.site.register(Denuncia, DenunciaAdmin)
+admin.site.register(Categoria, AdminReview)
 admin.site.register(Categoria, AdminCategoria)
