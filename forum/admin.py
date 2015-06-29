@@ -19,5 +19,5 @@ class AdminReview(admin.ModelAdmin):
 
 
 admin.site.register(Denuncia, DenunciaAdmin)
-admin.site.register(Categoria, AdminReview)
+admin.site.register(Gamereview, AdminReview)
 admin.site.register(Categoria, AdminCategoria)
