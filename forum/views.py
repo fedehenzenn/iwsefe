@@ -93,7 +93,7 @@ def detail_review(request, pk):
     e = 0
     e = 5 - x
     print (x)
-    comentarios = Comentario.objects.exclude(author__isnull=True)
+    comentarios = Comentario.objects.all().filter(review=review)
     if request.method == 'POST':
         # formulario enviado
         comentario_form = ComentarioForm(request.POST)
